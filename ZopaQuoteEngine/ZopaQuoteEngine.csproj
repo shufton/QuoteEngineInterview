@@ -45,9 +45,13 @@
   <ItemGroup>
     <Compile Include="CsvFileReader.cs" />
     <Compile Include="ICsvTransformer.cs" />
+    <Compile Include="InputValidation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quote.cs" />
+    <Compile Include="QuoteCalculationEngine.cs" />
+    <Compile Include="QuoteError.cs" />
+    <Compile Include="QuoteResult.cs" />
     <Compile Include="QuoteTransformer.cs" />
   </ItemGroup>
   <ItemGroup>

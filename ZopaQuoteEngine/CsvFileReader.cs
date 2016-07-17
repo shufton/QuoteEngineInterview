@@ -48,5 +48,13 @@ namespace ZopaQuoteEngine
                 line = reader.ReadLine();
             }
         }
+
+        public void TransformData(ICsvTransformer transformer)
+        {
+            foreach (var row in RawData)
+            {
+                transformer.TransformRow(row);
+            }
+        }
     }
 }

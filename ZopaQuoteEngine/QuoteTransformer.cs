@@ -28,8 +28,8 @@ namespace ZopaQuoteEngine
             }
 
             var lender = row[0];
-            var rate = Convert.ToDecimal(row[1]);
-            var amount = Convert.ToDecimal(row[2]);
+            var rate = Convert.ToDouble(row[1]);
+            var amount = Convert.ToDouble(row[2]);
 
             var quote = new Quote(lender, rate, amount);
             Quotes.Add(quote);

@@ -10,19 +10,26 @@ namespace ZopaQuoteEngine
     {
         static void Main(string[] args)
         {
-            if (2 != args.Length)
-            {
-                PrintUsage();
+            var inputValidator = new InputValidation();
+            if (!inputValidator.ValidateInputs(args))
                 return;
+
+            var csvReader = new CsvFileReader(inputValidator.FileName);
+            csvReader.Read();
+
+            var quoteTransformer = new QuoteTransformer();
+            csvReader.TransformData(quoteTransformer);
+
+            var quoteCalculator = new QuoteCalculationEngine(36);
+            var quoteResult = quoteCalculator.RequestQuote(quoteTransformer.Quotes, inputValidator.LoanAmount);
+
+            if (quoteResult.IsValid)
+            {
+                Console.WriteLine($"Requested Amount: £{quoteResult.Amount}");
+                Console.WriteLine($"Rate: £{quoteResult.Rate:0.#}%");
+                Console.WriteLine($"Monthly repayment: £{quoteResult.MontlyRepayment:0.##}");
+                Console.WriteLine($"Total repayment: £{quoteResult.TotalRepayment:0.##}");
             }
-
-        }
-
-        static void PrintUsage()
-        {
-            Console.WriteLine("Usage: Quote.exe [market_file] [loan_amount]\r\n"+
-                              "       market_file : The current list of available lenders adn their rate/available amount\r\n" +
-                              "       loan_amount : The loan amount that the application is to determine a quote offer for.");
         }
     }
 }
