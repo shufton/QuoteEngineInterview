@@ -1,6 +1,6 @@
 ﻿namespace ZopaQuoteEngine
 {
-    internal interface ICsvTransformer
+    public interface ICsvTransformer
     {
         void TransformRow(string[] row);
     }

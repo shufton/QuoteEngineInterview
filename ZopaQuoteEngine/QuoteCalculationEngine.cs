@@ -86,8 +86,7 @@ namespace ZopaQuoteEngine
 
         internal double CalculateApr(double loanAmount, double repaymentAmount)
         {
-            var diff = repaymentAmount - loanAmount;
-            return (2 * 0.33333333 * diff) * (loanAmount * (TermInMonths + 1));
+            return Math.Pow(repaymentAmount/loanAmount, (1.0/3.0)) - 1.0;
         }
     }
 }

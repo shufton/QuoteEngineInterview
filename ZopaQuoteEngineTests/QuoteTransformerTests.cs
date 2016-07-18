@@ -13,7 +13,6 @@ namespace ZopaQuoteEngineTests
             var qt = new QuoteTransformer();
             qt.TransformRow(null);
 
-
             Assert.AreEqual(0,qt.Quotes.Count);
         }
         [Test]

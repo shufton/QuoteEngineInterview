@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework.Internal;
+﻿using System.Collections.Generic;
 using NUnit.Framework;
 using ZopaQuoteEngine;
 
@@ -135,7 +130,7 @@ namespace ZopaQuoteEngineTests
         }
 
         [Test]
-        public void CalculateRepaymentAmountForQuote_ZeroInterest_FullQuoteAmount()
+        public void CalculateInterestForQuote_ZeroInterest_FullQuoteAmount()
         {
             var qe = new QuoteCalculationEngine(36);
 
@@ -147,27 +142,27 @@ namespace ZopaQuoteEngineTests
         }
 
         [Test]
-        public void CalculateRepaymentAmountForQuote_FullQuoteAmount()
+        public void CalculateInterestForQuote_FullQuoteAmount()
         {
             var qe = new QuoteCalculationEngine(36);
 
             var quote = new Quote("Example", 0.07, 1000.0);
 
-            var repayableAmount = qe.CalculateInterest(quote, 1000.0);
+            var interest = qe.CalculateInterest(quote, 1000.0);
 
-            Assert.AreEqual(232.93, repayableAmount, 0.01);
+            Assert.AreEqual(232.93, interest, 0.01);
         }
 
         [Test]
-        public void CalculateRepaymentAmountForQuote_PartialQuoteAmount()
+        public void CalculateInterestForQuote_PartialQuoteAmount()
         {
             var qe = new QuoteCalculationEngine(36);
 
             var quote = new Quote("Example", 0.07, 1500.0);
 
-            var repayableAmount = qe.CalculateInterest(quote, 1000.0);
+            var interest = qe.CalculateInterest(quote, 1000.0);
 
-            Assert.AreEqual(232.93, repayableAmount, 0.01);
+            Assert.AreEqual(232.93, interest, 0.01);
         }
 
         [Test]
@@ -217,9 +212,9 @@ namespace ZopaQuoteEngineTests
         {
             var qe = new QuoteCalculationEngine(36);
 
-            var apr = qe.CalculateApr(1000.0, 1232.93);
+            var apr = qe.CalculateApr(1000.0, 1225.04);
 
-            Assert.AreEqual(5.0, apr);
+            Assert.AreEqual(0.07, apr,0.01);
         }
     }
 }

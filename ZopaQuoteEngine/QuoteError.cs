@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ZopaQuoteEngine
+﻿namespace ZopaQuoteEngine
 {
     enum QuoteError
     {
@@ -14,7 +8,7 @@ namespace ZopaQuoteEngine
 
     sealed class QuoteErrorParser
     {
-        internal string ExplainQuoteError(QuoteError error)
+        internal static string ExplainQuoteError(QuoteError error)
         {
             switch (error)
             {

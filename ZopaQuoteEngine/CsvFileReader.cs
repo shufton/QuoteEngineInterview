@@ -51,6 +51,9 @@ namespace ZopaQuoteEngine
 
         public void TransformData(ICsvTransformer transformer)
         {
+            if (null == transformer)
+                return;
+
             foreach (var row in RawData)
             {
                 transformer.TransformRow(row);

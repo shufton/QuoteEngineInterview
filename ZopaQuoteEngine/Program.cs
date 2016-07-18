@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ZopaQuoteEngine
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
@@ -26,9 +22,13 @@ namespace ZopaQuoteEngine
             if (quoteResult.IsValid)
             {
                 Console.WriteLine($"Requested Amount: £{quoteResult.Amount}");
-                Console.WriteLine($"Rate: £{quoteResult.Rate:0.#}%");
+                Console.WriteLine($"Rate: {quoteResult.Rate*100:0.#}%");
                 Console.WriteLine($"Monthly repayment: £{quoteResult.MontlyRepayment:0.##}");
                 Console.WriteLine($"Total repayment: £{quoteResult.TotalRepayment:0.##}");
+            }
+            else
+            {
+                Console.WriteLine(QuoteErrorParser.ExplainQuoteError(quoteResult.NoQuoteReason));
             }
         }
     }

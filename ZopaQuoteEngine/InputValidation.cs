@@ -44,8 +44,8 @@ namespace ZopaQuoteEngine
         {
             Console.WriteLine("Usage: Quote.exe [market_file] [loan_amount]\r\n" +
                               "       market_file : The current list of available lenders adn their rate/available amount\r\n" +
-                              "       loan_amount : The loan amount that the application is to determine a quote offer for." +
-                              "                      This must be between £1,000 and £15,000 rounded to the nearest £100.");
+                              "       loan_amount : The loan amount that the application is to determine a quote offer for.\r\n" +
+                              "                     This must be between £1,000 and £15,000 rounded to the nearest £100.");
         }
     }
 }
